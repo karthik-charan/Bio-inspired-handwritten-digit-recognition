@@ -13,6 +13,17 @@ def FFT_transform(mat):
 
     return magnitude_spectrum
 
+# FFT conversion function with both Phase and Magnitude
+def FFT_transform_PM(mat):
+    #tranform img data to FFT
+    fft_data = np.fft.fft2(mat)
+    #tranform complex number matrix to floating point
+    fshift = np.fft.fftshift(fft_data)
+    magnitude_spectrum = 20*np.log(np.abs(fshift))
+    phase_spectrum = np.angle(fshift)
+
+    return magnitude_spectrum, phase_spectrum
+
 # Code of functions to load train/test data from file goes here
 with open('Data/train_9.txt') as f:
     for line in f:
