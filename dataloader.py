@@ -1,5 +1,7 @@
+#I think we should include something that changes the value after the furier transform when deviding by 0 (this happens for train_7 it also gives a warning but the code still runs) so that the value is not set to -inf. Or maybe we can fix this already as a preprocessing step. I am just unsure how exactly we want to handle this!!
 import numpy as np
 from visualise import plot_digi_fig
+
 
 # FFT conversion function code goes here
 def FFT_transform(mat):
