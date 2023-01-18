@@ -19,7 +19,7 @@ def FFT_transform_PM(mat):
     fft_data = np.fft.fft2(mat)
     #tranform complex number matrix to floating point
     fshift = np.fft.fftshift(fft_data)
-    magnitude_spectrum = 20*np.log(np.abs(fshift))
+    magnitude_spectrum = 20*np.log1p(np.abs(fshift))
     phase_spectrum = np.angle(fshift)
 
     return magnitude_spectrum, phase_spectrum
