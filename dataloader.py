@@ -22,7 +22,16 @@ def FFT_transform_PM(mat):
     magnitude_spectrum = 20*np.log1p(np.abs(fshift))
     phase_spectrum = np.angle(fshift)
 
-    return magnitude_spectrum, phase_spectrum
+    return magnitude_spectrum,phase_spectrum
+
+#This function is based on Stevens implimentation (to keep both magnitude and phase)
+def FFT_transform_ST(x, abs_only= False):
+    x_fft_complex = np.fft.fftshift(np.fft.fft2(x))
+    x_fft_abs = np.abs(x_fft_complex)
+    if abs_only:
+        return x_fft_abs
+    x_fft_angle = np.angle(x_fft_complex)
+    return np.array([x_fft_abs,x_fft_angle])
 
 # Code of functions to load train/test data from file goes here
 with open('Data/train_9.txt') as f:
